@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushAndRemoveUntil(
-          context as BuildContext,
+          context,
           MaterialPageRoute(builder: (context) => widget.child!),
           (route) => false);
     });
@@ -26,7 +26,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           "Welcome To Flutter Firebase",
-          style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
