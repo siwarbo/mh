@@ -2,6 +2,7 @@ import 'package:alh/features/user_auth/firebase_auth_implementation/firebase_aut
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:alh/features/user_auth/presentation/widgets/form_container_widget.dart';
+import 'package:alh/global/common/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -79,11 +80,16 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
-                        child:_isSigning ? CircularProgressIndicator(color: Colors.white,): Text(
-                      "Login",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )),
+                        child: _isSigning
+                            ? CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : Text(
+                                "Login",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
                   ),
                 ),
               ),
@@ -137,10 +143,10 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     if (user != null) {
-      print("User is successfully signedIn");
+      showToast(message: "User is successfully signed in");
       Navigator.pushNamed(context, "/home");
     } else {
-      print("Some error happend");
+      showToast(message: "Some error happend");
     }
   }
 }

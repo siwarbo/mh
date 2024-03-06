@@ -1,3 +1,4 @@
+import 'package:alh/global/common/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -43,13 +44,16 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+        SizedBox(
+          height: 30,
+        ),
 
         /////
         GestureDetector(
           onTap: () {
             FirebaseAuth.instance.signOut();
             Navigator.pushNamed(context, "/login");
-            print("Successfully signed out"); //
+            showToast(message: "Successfully signed out");
           },
           child: Container(
             height: 45,

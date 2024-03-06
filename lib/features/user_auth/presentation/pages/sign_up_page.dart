@@ -1,6 +1,7 @@
 import 'package:alh/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:alh/features/user_auth/presentation/pages/login_page.dart';
 import 'package:alh/features/user_auth/presentation/widgets/form_container_widget.dart';
+import 'package:alh/global/common/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -76,6 +77,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 GestureDetector(
                   onTap: () {
                     _signUp();
+                    
                   },
                   child: Container(
                     width: double.infinity,
@@ -145,10 +147,10 @@ class _SignUpPageState extends State<SignUpPage> {
     });
 
     if (user != null) {
-      print("User is successfully created");
+      showToast(message: "User is successfully created");
       Navigator.pushNamed(context, "/home");
     } else {
-      print("Some error happend");
+      showToast(message: "Some error happend");
     }
   }
 }
