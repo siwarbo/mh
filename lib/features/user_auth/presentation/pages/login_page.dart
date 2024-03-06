@@ -6,6 +6,7 @@ import 'package:alh/global/common/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
 
   final FirebaseAuthService _auth = FirebaseAuthService();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -100,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    //_signInWithGoogle();
+                    _signInWithGoogle();
                   },
                   child: Container(
                     width: double.infinity,
@@ -188,6 +190,30 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushNamed(context, "/home");
     } else {
       showToast(message: "Some error happend");
+    }
+  }
+
+  _signInWithGoogle() async {
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await _googleSignIn.signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken,
+        );
+
+        await _firebaseAuth.signInWithCredential(credential);
+        Navigator.pushNamed(context, "/home");
+      }
+    } catch (e) {
+      showToast(message: "some error occured $e");
     }
   }
 }
