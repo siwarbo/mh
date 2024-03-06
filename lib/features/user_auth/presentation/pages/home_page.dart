@@ -43,6 +43,30 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
+        /////
+        GestureDetector(
+          onTap: () {
+            FirebaseAuth.instance.signOut();
+            Navigator.pushNamed(context, "/login");
+            print("Successfully signed out"); //
+          },
+          child: Container(
+            height: 45,
+            width: 100,
+            decoration: BoxDecoration(
+                color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+            child: Center(
+              child: Text(
+                "Sign out",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ),
+          ),
+        )
       ]),
     );
   }
