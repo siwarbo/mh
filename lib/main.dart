@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alh/features/app/spash_screen/splash_screen.dart';
+import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Firebase',
-        home: SplashScreen(
-          child: LoginPage(),
-        ));
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Firebase',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => SplashScreen(
+              child: LoginPage(),
+            ),
+        '/home': (context) => HomePage(), // Define the '/home' route
+      },
+    );
   }
 }
