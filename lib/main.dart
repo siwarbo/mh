@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alh/blocs/cart/cart_bloc.dart';
 import 'package:alh/blocs/wishlist/wishlist_bloc.dart';
 import 'package:alh/config/app_router.dart';
 import 'package:alh/features/app/spash_screen/splash_screen.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_)=> WishlistBloc()..add(StartWishList())),
+        BlocProvider(create: (_) => WishlistBloc()..add(StartWishList())),
+        BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
         //   '/login': (context) => LoginPage(),
         //   '/signUp': (context) => SignUpPage(),
         //'/home': (context) => HomePage(),
-      
+
         //},
         onGenerateRoute: AppRouter.onGenerateRoute,
         initialRoute: HomeScreen.routeName,
