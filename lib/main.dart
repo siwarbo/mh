@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:alh/config/app_router.dart';
 import 'package:alh/features/app/spash_screen/splash_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
+import 'package:alh/screens/home/home_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/login_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,17 +31,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Firebase',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => SplashScreen(
-              // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
-              child: LoginPage(),
-            ),
-        '/login': (context) => LoginPage(),
-        '/signUp': (context) => SignUpPage(),
-        '/home': (context) => HomePage(),
-      },
+      title: 'zero to unicon',
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => SplashScreen(
+      //         // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
+      //         child: LoginPage(),
+      //       ),
+      //   '/login': (context) => LoginPage(),
+      //   '/signUp': (context) => SignUpPage(),
+      //'/home': (context) => HomePage(),
+
+      //},
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      initialRoute: HomeScreen.routeName,
     );
   }
 }
