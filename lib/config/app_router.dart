@@ -1,7 +1,8 @@
-import 'package:alh/models/category_model.dart';
 import 'package:alh/models/models.dart';
 import 'package:flutter/material.dart';
-import '/screens/screens.dart';
+import 'package:alh/screens/screens.dart';
+
+import '../screens/screens.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -11,6 +12,8 @@ class AppRouter {
         return HomeScreen.route();
       case HomeScreen.routeName:
         return HomeScreen.route();
+      case SplashScreen.routeName:
+        return SplashScreen.route();
       case CartScreen.routeName:
         return CartScreen.route();
       case ProductScreen.routeName:

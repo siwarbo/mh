@@ -1,16 +1,21 @@
 import 'dart:io';
 
 import 'package:alh/blocs/cart/cart_bloc.dart';
+import 'package:alh/blocs/category/category_bloc.dart';
 import 'package:alh/blocs/wishlist/wishlist_bloc.dart';
 import 'package:alh/config/app_router.dart';
-import 'package:alh/features/app/spash_screen/splash_screen.dart';
+import 'package:alh/config/theme.dart';
+//import 'package:alh/features/app/spash_screen/splash_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
+import 'package:alh/repositories/category/category_repository.dart';
 import 'package:alh/screens/home/home_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/login_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:alh/screens/screens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +41,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishList())),
         BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
+        BlocProvider(
+          create: (_) => CategoryBloc(
+            categoryRepository: CategoryRepository(),
+          )..add(LoadCategories()),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -52,7 +62,7 @@ class MyApp extends StatelessWidget {
 
         //},
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: HomeScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }
