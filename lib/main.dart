@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:alh/screens/screens.dart';
+import 'blocs/blocs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

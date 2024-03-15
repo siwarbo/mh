@@ -1,5 +1,5 @@
-import 'package:alh/models/category_model.dart';
-import 'package:alh/repositories/category/base_category_repository.dart';
+import '/models/category_model.dart';
+import '/repositories/category/base_category_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CategoryRepository extends BaseCategoryRepository {
