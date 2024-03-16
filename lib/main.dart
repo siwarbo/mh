@@ -7,7 +7,8 @@ import 'package:alh/config/app_router.dart';
 import 'package:alh/config/theme.dart';
 //import 'package:alh/features/app/spash_screen/splash_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
-import 'package:alh/repositories/category/category_repository.dart';
+//import 'package:alh/repositories/category/category_repository.dart';
+import '/repositories/repositories.dart';
 import 'package:alh/screens/home/home_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/login_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/sign_up_page.dart';
@@ -46,6 +47,11 @@ class MyApp extends StatelessWidget {
           create: (_) => CategoryBloc(
             categoryRepository: CategoryRepository(),
           )..add(LoadCategories()),
+        ),
+        BlocProvider(
+          create: (_) => ProductBloc(
+            productRepository: ProductRepository(),
+          )..add(LoadProducts()),
         )
       ],
       child: MaterialApp(
