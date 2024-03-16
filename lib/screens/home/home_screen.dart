@@ -66,10 +66,24 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           SectionTitle(title: 'MOST POPULAR'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isPopular)
-                  .toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is ProductLoaded) {
+                return ProductCarousel(
+                  products: state.products
+                      .where((product) => product.isPopular)
+                      .toList(),
+                );
+              } else {
+                return Text('Something went wrong.');
+              }
+            },
+          ),
         ],
       ),
     );
