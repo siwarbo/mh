@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                   enlargeCenterPage: true,
                   enlargeStrategy: CenterPageEnlargeStrategy.height,
                 ),
-                items: Category.categories
+                items: state.categories
                     .map((category) => HeroCarouselCard(category: category))
                     .toList(),
               );
