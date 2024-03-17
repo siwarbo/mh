@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
+//
+import 'package:cloud_firestore/cloud_firestore.dart';
+//
 import '../../../global/common/toast.dart';
 
 class FirebaseAuthService {
@@ -36,4 +38,21 @@ class FirebaseAuthService {
     }
     return null;
   }
+
+  //
+  Future<void> pushUserDetailsToFirestore(String email, String role) async {
+    try {
+      User? user = _auth.currentUser;
+      if (user != null) {
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+        CollectionReference ref = firebaseFirestore.collection('users');
+        await ref.doc(user.uid).set({'email': email, 'role': role});
+      } else {
+        showToast(message: 'User is not logged in.');
+      }
+    } catch (e) {
+      showToast(message: 'An error occurred: $e');
+    }
+  }
+  //
 }

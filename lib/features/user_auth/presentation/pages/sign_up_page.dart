@@ -20,7 +20,9 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _passwordController = TextEditingController();
 
   bool isSigningUp = false;
-
+  //
+  String _selectedRole = "Student";
+  //
   @override
   void dispose() {
     _usernameController.dispose();
@@ -71,6 +73,23 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: "Password",
                   isPasswordField: true,
                 ),
+                //
+                SizedBox(height: 10),
+                DropdownButton<String>(
+                  value: _selectedRole,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedRole = newValue!;
+                    });
+                  },
+                  items: <String>['Student', 'Teacher'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                //
                 SizedBox(
                   height: 30,
                 ),
@@ -146,6 +165,9 @@ class _SignUpPageState extends State<SignUpPage> {
     });
 
     if (user != null) {
+      //
+      await _auth.pushUserDetailsToFirestore(email, _selectedRole);
+      //
       showToast(message: "User is successfully created");
       Navigator.pushNamed(context, "/home");
     } else {
