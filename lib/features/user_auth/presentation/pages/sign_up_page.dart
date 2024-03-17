@@ -77,13 +77,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 GestureDetector(
                   onTap: () {
                     _signUp();
-                    
                   },
                   child: Container(
                     width: double.infinity,
                     height: 45,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(

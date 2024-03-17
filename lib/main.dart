@@ -5,6 +5,7 @@ import 'package:alh/blocs/category/category_bloc.dart';
 import 'package:alh/blocs/wishlist/wishlist_bloc.dart';
 import 'package:alh/config/app_router.dart';
 import 'package:alh/config/theme.dart';
+import 'package:alh/features/app/spash_screen/splash_screen.dart';
 //import 'package:alh/features/app/spash_screen/splash_screen.dart';
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
 //import 'package:alh/repositories/category/category_repository.dart';
@@ -57,19 +58,19 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'zero to unicon',
-        // initialRoute: '/',
-        // routes: {
-        //   '/': (context) => SplashScreen(
-        //         // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
-        //         child: LoginPage(),
-        //       ),
-        //   '/login': (context) => LoginPage(),
-        //   '/signUp': (context) => SignUpPage(),
-        //'/home': (context) => HomePage(),
-
-        //},
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => SplashScreen(
+                // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
+                child: LoginPage(),
+              ),
+          '/login': (context) => LoginPage(),
+          '/signUp': (context) => SignUpPage(),
+          '/home': (context) => HomeScreen(),
+        },
+
+        //initialRoute: SplashScreen.routeName,
       ),
     );
   }
