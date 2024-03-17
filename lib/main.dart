@@ -67,7 +67,8 @@ class MyApp extends StatelessWidget {
               ),
           '/login': (context) => LoginPage(),
           '/signUp': (context) => SignUpPage(),
-          '/home': (context) => HomeScreen(),
+          '/home': (context) => LoginPage(),
+          '/admin': (context) => LoginPage(),
         },
 
         //initialRoute: SplashScreen.routeName,

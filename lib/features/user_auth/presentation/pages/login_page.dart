@@ -1,8 +1,10 @@
 import 'package:alh/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:alh/features/user_auth/presentation/pages/admin.dart';
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:alh/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:alh/global/common/toast.dart';
+import 'package:alh/screens/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -186,8 +188,24 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     if (user != null) {
-      showToast(message: "User is successfully signed in");
-      Navigator.pushNamed(context, "/home");
+      //
+      String? role = await _auth.getUserRoleFromFirestore(user.uid);
+      if (role != null) {
+        if (role == 'Student') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        } else if (role == 'Teacher') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => AdminPage()));
+        } else {
+          showToast(message: "Unknown role: $role");
+        }
+      } else {
+        showToast(message: "Role not found for the user");
+      }
+      //
+      // showToast(message: "User is successfully signed in");
+      // Navigator.pushNamed(context, "/home");
     } else {
       showToast(message: "Some error happend");
     }
@@ -210,7 +228,8 @@ class _LoginPageState extends State<LoginPage> {
         );
 
         await _firebaseAuth.signInWithCredential(credential);
-        Navigator.pushNamed(context, "/home");
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
       }
     } catch (e) {
       showToast(message: "some error occured $e");

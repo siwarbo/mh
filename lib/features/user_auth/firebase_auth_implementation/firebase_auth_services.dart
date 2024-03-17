@@ -55,4 +55,19 @@ class FirebaseAuthService {
     }
   }
   //
+  Future<String?> getUserRoleFromFirestore(String uid) async {
+  try {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    if (snapshot.exists) {
+      return snapshot.get('role');
+    } else {
+      showToast(message: "User document does not exist");
+      return null;
+    }
+  } catch (e) {
+    showToast(message: "Error fetching user role: $e");
+    return null;
+  }
+}
+//
 }
