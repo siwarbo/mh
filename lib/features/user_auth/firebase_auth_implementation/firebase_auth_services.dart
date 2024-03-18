@@ -7,6 +7,37 @@ import '../../../global/common/toast.dart';
 class FirebaseAuthService {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
+  // Method to get the current user's UID
+  String? getCurrentUserUID() {
+    try {
+      return _auth.currentUser?.uid;
+    } catch (e) {
+      print('Error getting current user UID: $e');
+      return null;
+    }
+  }
+
+  // Method to get the user's email from Firestore
+  Future<String?> getUserEmailFromFirestore(String uid) async {
+    try {
+      DocumentSnapshot snapshot =
+          await FirebaseFirestore.instance.collection('users').doc(uid).get();
+      if (snapshot.exists) {
+        return snapshot.get('email');
+      } else {
+        showToast(message: 'User document does not exist');
+        return null;
+      }
+    } catch (e) {
+      showToast(message: 'Error fetching user email: $e');
+      return null;
+    }
+  }
+
+  // Method to get the user's role from Firestore
+  
+
+
   Future<User?> signUpWithEmailAndPassword(
       String email, String password) async {
     try {
