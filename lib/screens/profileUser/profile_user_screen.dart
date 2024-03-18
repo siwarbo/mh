@@ -50,50 +50,67 @@ class _ProfileUserState extends State<ProfileUser> {
     return Scaffold(
       appBar: CustomAppBar(title: 'Profile'),
       //bottomNavigationBar: BottomAppBar(),
-      body: Stack(children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  'assets/images/profile.jpg'), // Replace with your image path
-              fit: BoxFit.cover, // Adjust image fit as needed
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/images/images.jpeg'), // Replace with your image path
+            fit: BoxFit.cover, // Adjust image fit as needed
           ),
         ),
-        Padding(
+        child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ListTile(
-                leading: Icon(Icons.email),
-                title: Text(
-                  'Email',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                subtitle: Text(
-                  _email,
-                  style: TextStyle(fontSize: 16.0),
-                ),
+              // User profile image widget
+              CircleAvatar(
+                radius: 100, // Adjust radius as needed
+                backgroundImage: AssetImage(
+                    'assets/images/iconp.png'), // Replace with your image path
               ),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text(
-                  'Role',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                subtitle: Text(
-                  _role,
-                  style: TextStyle(fontSize: 16.0),
-                ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Icon(Icons.email, color: Colors.black), // Email icon
+                  SizedBox(width: 10),
+                  Text(
+                    'Email:',
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
+              Text(
+                _email,
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
+              ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Icon(Icons.person, color: Colors.black), // Role icon
+                  SizedBox(width: 10),
+                  Text(
+                    'Role:',
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
+              Text(
+                _role,
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
               ),
             ],
           ),
         ),
-      ]),
+      ),
     );
   }
 }
