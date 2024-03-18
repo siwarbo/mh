@@ -1,4 +1,6 @@
 import 'package:alh/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:alh/features/user_auth/presentation/pages/acter3.dart';
+import 'package:alh/features/user_auth/presentation/pages/acter4.dart';
 import 'package:alh/features/user_auth/presentation/pages/admin.dart';
 import 'package:alh/features/user_auth/presentation/pages/home_page.dart';
 import 'package:alh/features/user_auth/presentation/pages/sign_up_page.dart';
@@ -197,6 +199,12 @@ class _LoginPageState extends State<LoginPage> {
         } else if (role == 'Admin') {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => AdminPage()));
+        } else if (role == 'Acter3') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Acter3Page()));
+        } else if (role == 'Acter4') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Acter4Page()));
         } else {
           showToast(message: "Unknown role: $role");
         }
