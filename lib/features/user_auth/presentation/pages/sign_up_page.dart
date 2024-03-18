@@ -21,7 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   bool isSigningUp = false;
   //
-  String _selectedRole = "Student";
+  String _selectedRole = "User";
   //
   @override
   void dispose() {
@@ -82,7 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       _selectedRole = newValue!;
                     });
                   },
-                  items: <String>['Student', 'Teacher'].map((String value) {
+                  items: <String>['User', 'Admin'].map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),

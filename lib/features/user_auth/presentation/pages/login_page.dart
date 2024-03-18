@@ -191,10 +191,10 @@ class _LoginPageState extends State<LoginPage> {
       //
       String? role = await _auth.getUserRoleFromFirestore(user.uid);
       if (role != null) {
-        if (role == 'Student') {
+        if (role == 'User') {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => HomeScreen()));
-        } else if (role == 'Teacher') {
+        } else if (role == 'Admin') {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => AdminPage()));
         } else {
