@@ -1,5 +1,7 @@
+import 'package:alh/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:alh/widgetts/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckoutScreen extends StatelessWidget {
   static const String routeName = '/checkout';
@@ -13,12 +15,6 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController addressController = TextEditingController();
-    final TextEditingController cityController = TextEditingController();
-    final TextEditingController countryController = TextEditingController();
-    final TextEditingController zipCodeController = TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(title: 'Checkout'),
       bottomNavigationBar: BottomAppBar(
@@ -28,90 +24,145 @@ class CheckoutScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.white),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/order');
-                },
-                child: Text('ORDER NOW',
-                    style: Theme.of(context).textTheme.headline5!),
-              )
+              BlocBuilder<CheckoutBloc, CheckoutState>(
+                  builder: (context, state) {
+                if (state is CheckoutLoading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (state is CheckoutLoaded) {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.white),
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/order-confirmation');
+                      context
+                          .read<CheckoutBloc>()
+                          .add(ConfirmCheckout(checkout: state.checkout));
+                    },
+                    child: Text('ORDER NOW',
+                        style: Theme.of(context).textTheme.headline5!),
+                  );
+                } else {
+                  return Text('Something went wrong');
+                }
+              })
             ],
           ),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'CUSTOMER INFORMATION',
-              style:
-                  Theme.of(context).textTheme.headline6!.copyWith(fontSize: 12),
-            ),
-            _buildTextFormField(emailController, context, 'Email'),
-            _buildTextFormField(nameController, context, 'Full Name'),
-            Text(
-              'DELEVERY INFORMATION',
-              style:
-                  Theme.of(context).textTheme.headline6!.copyWith(fontSize: 12),
-            ),
-            _buildTextFormField(addressController, context, 'Address'),
-            _buildTextFormField(cityController, context, 'City'),
-            _buildTextFormField(countryController, context, 'Country'),
-            _buildTextFormField(zipCodeController, context, 'Zip Code'),
-            SizedBox(height: 20),
-            Container(
-              height: 40,
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(color: Colors.black),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Center(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/payment-selection',
-                        );
-                      },
-                      child: Text(
-                        'SELECT A PAYMENT METHOD',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline3!
-                            .copyWith(fontSize: 12, color: Colors.white),
+        child:
+            BlocBuilder<CheckoutBloc, CheckoutState>(builder: (context, state) {
+          if (state is CheckoutLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is CheckoutLoaded) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'CUSTOMER INFORMATION',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 12),
+                ),
+                _buildTextFormField((value) {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(UpdateCheckout(email: value));
+                }, context, 'Email'),
+                _buildTextFormField((value) {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(UpdateCheckout(fullName: value));
+                }, context, 'Full Name'),
+                Text(
+                  'DELEVERY INFORMATION',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 12),
+                ),
+                _buildTextFormField((value) {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(UpdateCheckout(address: value));
+                }, context, 'Address'),
+                _buildTextFormField((value) {
+                  context.read<CheckoutBloc>().add(UpdateCheckout(city: value));
+                }, context, 'City'),
+                _buildTextFormField((value) {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(UpdateCheckout(country: value));
+                }, context, 'Country'),
+                _buildTextFormField((value) {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(UpdateCheckout(zipCode: value));
+                }, context, 'ZIP Code'),
+                SizedBox(height: 20),
+                Container(
+                  height: 40,
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(color: Colors.black),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Center(
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/payment-selection',
+                            );
+                          },
+                          child: Text(
+                            'SELECT A PAYMENT METHOD',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline3!
+                                .copyWith(fontSize: 12, color: Colors.white),
+                          ),
+                        ),
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'ORDER SUMMARY',
-              style:
-                  Theme.of(context).textTheme.headline6!.copyWith(fontSize: 12),
-            ),
-            OrderSummary(),
-          ],
-        ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'ORDER SUMMARY',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 12),
+                ),
+                OrderSummary(),
+              ],
+            );
+          } else {
+            return Text('Something went wrong');
+          }
+        }),
       ),
     );
   }
 
   Padding _buildTextFormField(
-    TextEditingController controller,
+    Function(String)? onChanged,
     BuildContext context,
     String labelText,
   ) {
@@ -129,7 +180,7 @@ class CheckoutScreen extends StatelessWidget {
           ),
           Expanded(
               child: TextFormField(
-            controller: controller,
+            onChanged: onChanged,
             decoration: const InputDecoration(
               isDense: true,
               contentPadding: EdgeInsets.only(left: 10),

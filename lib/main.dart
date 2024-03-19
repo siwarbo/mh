@@ -45,6 +45,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishList())),
         BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
         BlocProvider(
+          create: (context) => CheckoutBloc(
+            cartBloc: context.read<CartBloc>(),
+            checkoutRepository: CheckoutRepository(),
+          ),
+        ),
+        BlocProvider(
           create: (_) => CategoryBloc(
             categoryRepository: CategoryRepository(),
           )..add(LoadCategories()),
@@ -69,8 +75,8 @@ class MyApp extends StatelessWidget {
           '/signUp': (context) => SignUpPage(),
           '/home': (context) => LoginPage(),
           '/admin': (context) => LoginPage(),
-          '/acter3':(context)=>LoginPage(),
-          '/acter4':(context)=>LoginPage(),
+          '/acter3': (context) => LoginPage(),
+          '/acter4': (context) => LoginPage(),
         },
 
         //initialRoute: SplashScreen.routeName,

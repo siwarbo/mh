@@ -1,4 +1,5 @@
 import 'package:alh/models/models.dart';
+import 'package:alh/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:alh/screens/screens.dart';
 
@@ -26,6 +27,8 @@ class AppRouter {
         return ProfileUser.route();
       case CheckoutScreen.routeName:
         return CheckoutScreen.route();
+      case OrderConfirmation.routeName:
+        return OrderConfirmation.route();
 
       default:
         return _errorRoute();
