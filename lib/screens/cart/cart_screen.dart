@@ -27,7 +27,9 @@ class CartScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.white),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
                 child: Text('GO TO CHEKOUT',
                     style: Theme.of(context).textTheme.headline5!),
               )

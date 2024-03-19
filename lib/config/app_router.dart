@@ -24,6 +24,8 @@ class AppRouter {
         return WishlistScreen.route();
       case ProfileUser.routeName: // Add route for ProfileUser screen
         return ProfileUser.route();
+      case CheckoutScreen.routeName:
+        return CheckoutScreen.route();
 
       default:
         return _errorRoute();

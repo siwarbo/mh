@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {
             Navigator.pushNamed(context, '/wishlist');
           },
-        )
+        ),
       ],
     );
   }
