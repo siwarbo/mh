@@ -1,9 +1,13 @@
+import 'package:alh/adminInterface/screenss/products_screen.dart';
 import 'package:alh/models/models.dart';
 import 'package:alh/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:alh/screens/screens.dart';
 
 import '../screens/screens.dart';
+
+//
+import 'package:alh/adminInterface/screenss/screenss.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -29,6 +33,12 @@ class AppRouter {
         return CheckoutScreen.route();
       case OrderConfirmation.routeName:
         return OrderConfirmation.route();
+
+      //
+      case ProductsScreen.routeName:
+        return ProductsScreen.route();
+      case NewProductScreen.routeName:
+        return NewProductScreen.route();
 
       default:
         return _errorRoute();

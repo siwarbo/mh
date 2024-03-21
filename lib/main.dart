@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alh/adminInterface/screenss/products_screen.dart';
 import 'package:alh/blocs/cart/cart_bloc.dart';
 import 'package:alh/blocs/category/category_bloc.dart';
 import 'package:alh/blocs/wishlist/wishlist_bloc.dart';
@@ -77,6 +78,7 @@ class MyApp extends StatelessWidget {
           '/admin': (context) => LoginPage(),
           '/acter3': (context) => LoginPage(),
           '/acter4': (context) => LoginPage(),
+          // '/products': (context) => ProductsScreen(),
         },
 
         //initialRoute: SplashScreen.routeName,
