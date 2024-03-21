@@ -1,3 +1,5 @@
+import 'package:alh/adminInterface/models/product_model.dart';
+import 'package:alh/adminInterface/services/database_service.dart';
 import 'package:alh/adminInterface/services/storage_service.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +23,8 @@ class NewProductScreen extends StatelessWidget {
 
   StorageService storage =
       StorageService(storageBucket: 'gs://alhm-3f712.appspot.com');
+
+  DatabaseService database = DatabaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +71,7 @@ class NewProductScreen extends StatelessWidget {
                                   'imageUrl', (_) => imageUrl,
                                   ifAbsent: () => imageUrl);
 
-                              print(productController.newProduct['imageUrl']);
+                              //print(productController.newProduct['imageUrl']);
                             }
                           },
                           icon: const Icon(
@@ -144,7 +148,23 @@ class NewProductScreen extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      print(productController.newProduct);
+                      //print(productController.newProduct);
+                      database.addProduct(
+                        Product(
+                          id: int.parse(productController.newProduct['id']),
+                          name: productController.newProduct['name'],
+                          category: productController.newProduct['category'],
+                          description:
+                              productController.newProduct['description'],
+                          imageUrl: productController.newProduct['imageUrl'],
+                          isRecommended:
+                              productController.newProduct['isRecommended'],
+                          isPopular: productController.newProduct['isPopular'],
+                          price: productController.newProduct['price'],
+                          quantity:
+                              productController.newProduct['quantity'].toInt(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
