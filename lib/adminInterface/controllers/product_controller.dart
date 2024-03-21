@@ -67,4 +67,13 @@ class ProductController extends GetxController {
     product.quantity = value;
     products[index] = product;
   }
+
+  void saveNewProductQuantity(
+    Product product,
+    String field,
+    int value,
+  ) {
+    database.updateField(product, field, value);
+  }
+
 }

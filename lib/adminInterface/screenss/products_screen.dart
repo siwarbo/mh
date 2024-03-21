@@ -244,6 +244,10 @@ class ProductsCard extends StatelessWidget {
                                 value.toInt(),
                               );
                             },
+                            onChangeEnd: (value) {
+                              productController.saveNewProductQuantity(
+                                  product, 'quantity', value.toInt());
+                            },
                           ),
                           Text(
                             '${product.quantity.toInt()}',
