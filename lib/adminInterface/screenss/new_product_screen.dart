@@ -151,7 +151,7 @@ class NewProductScreen extends StatelessWidget {
                       //print(productController.newProduct);
                       database.addProduct(
                         Product(
-                          id: int.parse(productController.newProduct['id']),
+                          id: productController.newProduct['id'],
                           name: productController.newProduct['name'],
                           category: productController.newProduct['category'],
                           description:

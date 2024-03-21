@@ -62,19 +62,65 @@ class ProductsScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView.builder(
+              child: Obx(
+                () => ListView.builder(
                   itemCount: productController.products.length,
                   itemBuilder: (context, index) {
-                    return Obx(
-                      () => SizedBox(
-                        height: 210,
-                        child: ProductsCard(
-                          product: productController.products[index],
-                          index: index,
-                        ),
+                    final product = productController.products[index];
+                    return SizedBox(
+                      height: 210,
+                      child: ProductsCard(
+                        product: product,
+                        index: index,
                       ),
                     );
-                  }),
+                  },
+                ),
+              ),
+              // child: FutureBuilder<List<Product>>(
+              //   future: productController.getProducts(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.connectionState == ConnectionState.waiting) {
+              //       return const Center(child: CircularProgressIndicator());
+              //     }
+
+              //     if (snapshot.hasError) {
+              //       return Text('Error: ${snapshot.error}');
+              //     }
+
+              //     final products = snapshot.data!;
+
+              //     return Obx(
+              //       () => ListView.builder(
+              //         itemCount: products.length,
+              //         itemBuilder: (context, index) {
+              //           final product = products[index];
+              //           return SizedBox(
+              //             height: 210,
+              //             child: ProductsCard(
+              //               product: product,
+              //               index: index,
+              //             ),
+              //           );
+              //         },
+              //       ),
+              //     );
+              //   },
+              // ),
+              // child: Obx(
+              //   () => ListView.builder(
+              //     itemCount: productController.products.length,
+              //     itemBuilder: (context, index) {
+              //       return SizedBox(
+              //         height: 210,
+              //         child: ProductsCard(
+              //           product: productController.products[index],
+              //           index: index,
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
             )
           ],
         ),
@@ -157,6 +203,10 @@ class ProductsCard extends StatelessWidget {
                                 product,
                                 value,
                               );
+                            },
+                            onChangeEnd: (value) {
+                              productController.saveNewProductPrice(
+                                  product, 'price', value);
                             },
                           ),
                           Text(
