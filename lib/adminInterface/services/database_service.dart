@@ -5,14 +5,22 @@ class DatabaseService {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   Stream<List<Orders>> getOrders() {
+    return _firebaseFirestore.collection('orders').snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) => Orders.fromSnapshot(doc)).toList();
+    });
+  }
+
+  Stream<List<Orders>> getPendingOrders() {
     return _firebaseFirestore
         .collection('orders')
+        .where('isDelivered', isEqualTo: false)
+        .where('isCancelled', isEqualTo: false)
         .snapshots()
         .map((snapshot) {
       return snapshot.docs.map((doc) => Orders.fromSnapshot(doc)).toList();
     });
   }
-  
+
   Stream<List<Product>> getProducts() {
     return _firebaseFirestore
         .collection('products')
@@ -38,6 +46,7 @@ class DatabaseService {
         .then((querySnapshot) =>
             querySnapshot.docs.first.reference.update({field: newValue}));
   }
+
   Future<void> updateOrder(
     Orders order,
     String field,

@@ -46,9 +46,9 @@ class OrdersScreen extends StatelessWidget {
           Expanded(
             child: Obx(
               () => ListView.builder(
-                  itemCount: orderController.orders.length,
+                  itemCount: orderController.pendingOrders.length,
                   itemBuilder: (BuildContext context, index) {
-                    final order = orderController.orders[index];
+                    final order = orderController.pendingOrders[index];
                     return SizedBox(
                       child: OrderCard(
                         order: order,

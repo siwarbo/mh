@@ -10,11 +10,12 @@ class OrderController extends GetxController {
   @override
   void onInit() {
     orders.bindStream(databaseService.getOrders());
-
+    pendingOrders.bindStream(databaseService.getPendingOrders());
     super.onInit();
   }
 
   RxList<Orders> orders = <Orders>[].obs;
+  RxList<Orders> pendingOrders = <Orders>[].obs;
 
   void fetchOrders() async {
     try {
