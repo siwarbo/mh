@@ -25,4 +25,12 @@ class OrderController extends GetxController {
       print("Error fetching orders: $e");
     }
   }
+
+  void updateOrder(
+    Orders order,
+    String field,
+    bool value,
+  ) {
+    databaseService.updateOrder(order, field, value);
+  }
 }

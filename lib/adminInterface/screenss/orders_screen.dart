@@ -198,21 +198,50 @@ class OrderCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  order.isAccepted
+                      ? ElevatedButton(
+                          onPressed: () {
+                            orderController.updateOrder(
+                              order,
+                              'isDelivered',
+                              !order.isDelivered,
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            minimumSize: const Size(150, 40),
+                          ),
+                          child: const Text(
+                            "Deliver",
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                        )
+                      : ElevatedButton(
+                          onPressed: () {
+                            orderController.updateOrder(
+                              order,
+                              'isAccepted',
+                              !order.isAccepted,
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            minimumSize: const Size(150, 40),
+                          ),
+                          child: const Text(
+                            "Accept",
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
                   ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                      minimumSize: const Size(150, 40),
-                    ),
-                    child: const Text(
-                      "Accept",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      orderController.updateOrder(
+                          order, 'isCancelled', !order.isCancelled);
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
                       minimumSize: const Size(150, 40),

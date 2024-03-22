@@ -38,4 +38,16 @@ class DatabaseService {
         .then((querySnapshot) =>
             querySnapshot.docs.first.reference.update({field: newValue}));
   }
+  Future<void> updateOrder(
+    Orders order,
+    String field,
+    dynamic newValue,
+  ) {
+    return _firebaseFirestore
+        .collection('orders')
+        .where('id', isEqualTo: order.id)
+        .get()
+        .then((querySnapshot) =>
+            querySnapshot.docs.first.reference.update({field: newValue}));
+  }
 }
