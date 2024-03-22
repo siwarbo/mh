@@ -4,6 +4,15 @@ import 'package:alh/adminInterface/models/models.dart';
 class DatabaseService {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
+  Stream<List<Orders>> getOrders() {
+    return _firebaseFirestore
+        .collection('orders')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) => Orders.fromSnapshot(doc)).toList();
+    });
+  }
+  
   Stream<List<Product>> getProducts() {
     return _firebaseFirestore
         .collection('products')

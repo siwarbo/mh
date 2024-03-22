@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Orders extends Equatable {
@@ -12,9 +12,10 @@ class Orders extends Equatable {
   final double total;
   final bool isAccepted;
   final bool isDelivered;
-  final DateTime createdAt;
+  final bool isCancelled;
+  //final DateTime createdAt;
 
-  const Orders({
+  Orders({
     required this.id,
     required this.customerId,
     required this.productIds,
@@ -23,8 +24,25 @@ class Orders extends Equatable {
     required this.total,
     required this.isAccepted,
     required this.isDelivered,
-    required this.createdAt,
+    required this.isCancelled,
+    //required this.createdAt,
   });
+
+  @override
+  List<Object?> get props {
+    return [
+      id,
+      customerId,
+      productIds,
+      deliveryFee,
+      subtotal,
+      total,
+      isAccepted,
+      isDelivered,
+      isCancelled,
+      //createdAt,
+    ];
+  }
 
   Orders copyWith({
     String? id,
@@ -32,9 +50,11 @@ class Orders extends Equatable {
     List<String>? productIds,
     double? deliveryFee,
     double? total,
+    double? subtotal,
     bool? isAccepted,
     bool? isDelivered,
-    DateTime? createdAt,
+    bool? isCancelled,
+    //DateTime? createdAt,
   }) {
     return Orders(
       id: id ?? this.id,
@@ -45,7 +65,8 @@ class Orders extends Equatable {
       total: total ?? this.total,
       isAccepted: isAccepted ?? this.isAccepted,
       isDelivered: isDelivered ?? this.isDelivered,
-      createdAt: createdAt ?? this.createdAt,
+      isCancelled: isCancelled ?? this.isCancelled,
+      //createdAt: createdAt ?? this.createdAt,
     );
   }
 
@@ -53,48 +74,52 @@ class Orders extends Equatable {
     return {
       'id': id,
       'customerId': customerId,
+      'productIds': productIds,
       'deliveryFee': deliveryFee,
       'subtotal': subtotal,
       'total': total,
       'isAccepted': isAccepted,
       'isDelivered': isDelivered,
-      'createdAt': createdAt.millisecondsSinceEpoch,
+      'isCancelled': isCancelled,
+      //'createdAt': createdAt.millisecondsSinceEpoch,
     };
   }
 
-  // factory Order.fromSnapshot(DocumentSnapshot snap) {
-  //   return Order(
-  //     id: snap['id'],
-  //     customerId: snap['customerId'],
-  //     productIds: List<String>.from(snap['productIds']),
-  //     deliveryFee: snap['deliveryFee'],
-  //     subtotal: snap['subtotal'],
-  //     total: snap['total'],
-  //     isAccepted: snap['isAccepted'],
-  //     isDelivered: snap['isDelivered'],
-  //     createdAt: DateTime.fromMillisecondsSinceEpoch(snap['createdAt']),
-  //   );
-  // }
+  factory Orders.fromSnapshot(DocumentSnapshot snap) {
+    return Orders(
+      id: snap['id'],
+      customerId: snap['customerId'],
+      productIds: List<String>.from(snap['productIds']),
+      deliveryFee: snap['deliveryFee'],
+      subtotal: snap['subtotal'],
+      total: snap['total'],
+      isAccepted: snap['isAccepted'],
+      isDelivered: snap['isDelivered'],
+      isCancelled: snap['isCancelled'],
+      //createdAt: DateTime.parse(snap['createdAt']()),
+    );
+  }
 
   String toJson() => json.encode(toMap());
 
   @override
   bool get stringify => true;
 
-  @override
-  List<Object> get props {
-    return [
-      id,
-      customerId,
-      productIds,
-      deliveryFee,
-      subtotal,
-      total,
-      isAccepted,
-      isDelivered,
-      createdAt,
-    ];
-  }
+  // @override
+  // List<Object> get props {
+  //   return [
+  //     id,
+  //     customerId,
+  //     productIds,
+  //     deliveryFee,
+  //     subtotal,
+  //     total,
+  //     isAccepted,
+  //     isDelivered,
+  //     isCancelled,
+  //     createdAt,
+  //   ];
+  // }
 
   static List<Orders> orders = [
     Orders(
@@ -106,18 +131,20 @@ class Orders extends Equatable {
       total: 30,
       isAccepted: false,
       isDelivered: false,
-      createdAt: DateTime.now(),
+      isCancelled: false,
+      //createdAt: DateTime.now(),
     ),
     Orders(
       id: 'b',
       customerId: 'b',
-      productIds: const ['b', 'bb','cc'],
+      productIds: const ['b', 'bb', 'cc'],
       deliveryFee: 10,
       subtotal: 25,
       total: 35,
       isAccepted: false,
       isDelivered: false,
-      createdAt: DateTime.now(),
+      isCancelled: false,
+      //createdAt: DateTime.now(),
     ),
   ];
 }

@@ -21,6 +21,9 @@ class OrdersScreen extends StatelessWidget {
 
   OrdersScreen({super.key});
 
+  final OrderController orderController = Get.put(OrderController());
+  final ProductController productController = Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +31,31 @@ class OrdersScreen extends StatelessWidget {
         title: const Text('Orders'),
         backgroundColor: Colors.black,
       ),
+      // body: Obx(() {
+      //   return ListView.builder(
+      //     itemCount: orderController.orders.length,
+      //     itemBuilder: (BuildContext context, int index) {
+      //       final order = orderController.orders[index];
+      //       return OrderCard(order: order);
+      //     },
+      //   );
+      //}),
+
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-                itemCount: Orders.orders.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return OrderCard(order: Orders.orders[index]);
-                }),
+            child: Obx(
+              () => ListView.builder(
+                  itemCount: orderController.orders.length,
+                  itemBuilder: (BuildContext context, index) {
+                    final order = orderController.orders[index];
+                    return SizedBox(
+                      child: OrderCard(
+                        order: order,
+                      ),
+                    );
+                  }),
+            ),
           ),
         ],
       ),
@@ -45,11 +65,12 @@ class OrdersScreen extends StatelessWidget {
 
 class OrderCard extends StatelessWidget {
   final Orders order;
-  const OrderCard({super.key, required this.order});
-
+  OrderCard({super.key, required this.order});
+  final OrderController orderController = Get.find();
+  final ProductController productController = Get.find();
   @override
   Widget build(BuildContext context) {
-    var products = Product.products
+    var products = productController.products
         .where((product) => order.productIds.contains(product.id))
         .toList();
     return Padding(
@@ -75,7 +96,8 @@ class OrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    DateFormat('dd-MM-yyyy').format(order.createdAt),
+                    //DateFormat('dd-MM-yyyy').format(order.createdAt),
+                    DateFormat.ABBR_MONTH_DAY,
                     style: const TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
@@ -183,7 +205,7 @@ class OrderCard extends StatelessWidget {
                       minimumSize: const Size(150, 40),
                     ),
                     child: const Text(
-                      "Accepte",
+                      "Accept",
                       style: TextStyle(
                         fontSize: 12,
                       ),
