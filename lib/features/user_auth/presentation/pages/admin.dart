@@ -42,6 +42,23 @@ class _AdminPageState extends State<AdminPage> {
                 ),
               ),
             ),
+            Container(
+              width: double.infinity,
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InkWell(
+                onTap: () {
+                  //Get.to(ProductsScreen());
+                  //Get.toNamed('/products');
+                  Navigator.pushNamed(context, '/orders');
+                },
+                child: const Card(
+                  child: Center(
+                    child: Text('Go To Orders'),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

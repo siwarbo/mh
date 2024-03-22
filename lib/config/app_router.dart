@@ -40,6 +40,9 @@ class AppRouter {
       case NewProductScreen.routeName:
         return NewProductScreen.route();
 
+      case OrdersScreen.routeName:
+        return OrdersScreen.route();
+
       default:
         return _errorRoute();
     }
