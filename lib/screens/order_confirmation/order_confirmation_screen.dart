@@ -16,6 +16,38 @@ class OrderConfirmation extends StatelessWidget {
     );
   }
 
+  // Define a separate method for building the cart item list
+  Widget _buildCartItemList(BuildContext context) {
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        if (state is CartLoaded) {
+          return _buildListView(state.cart);
+        } else {
+          return CircularProgressIndicator(); // Or any loading indicator
+        }
+      },
+    );
+  }
+
+// Define a separate method for building the ListView
+  Widget _buildListView(Cart cart) {
+    return ListView.builder(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: cart.productQuantity(cart.products).keys.length,
+      itemBuilder: (context, index) {
+        var product = cart.productQuantity(cart.products).keys.elementAt(index);
+        var quantity =
+            cart.productQuantity(cart.products).values.elementAt(index);
+        return OrderSummaryProductCard(
+          product: product,
+          quantity: quantity,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,37 +127,39 @@ class OrderConfirmation extends StatelessWidget {
                   ),
                   Divider(thickness: 2),
                   SizedBox(height: 5),
-                  BlocBuilder<CartBloc, CartState>(
-                    builder: (context, state) {
-                      if (state is CartLoaded) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: state.cart
-                              .productQuantity(state.cart.products)
-                              .keys
-                              .length,
-                          itemBuilder: (context, index) {
-                            var product = state.cart
-                                .productQuantity(state.cart.products)
-                                .keys
-                                .elementAt(index);
-                            var quantity = state.cart
-                                .productQuantity(state.cart.products)
-                                .values
-                                .elementAt(index);
-                            return OrderSummaryProductCard(
-                              product: product,
-                              quantity: quantity,
-                            );
-                          },
-                        );
-                      } else {
-                        return CircularProgressIndicator(); // Or any loading indicator
-                      }
-                    },
-                  ),
+                  _buildCartItemList(context),
+
+                  // BlocBuilder<CartBloc, CartState>(
+                  //   builder: (context, state) {
+                  //     if (state is CartLoaded) {
+                  //       return ListView.builder(
+                  //         shrinkWrap: true,
+                  //         padding: EdgeInsets.zero,
+                  //         physics: NeverScrollableScrollPhysics(),
+                  //         itemCount: state.cart
+                  //             .productQuantity(state.cart.products)
+                  //             .keys
+                  //             .length,
+                  //         itemBuilder: (context, index) {
+                  //           var product = state.cart
+                  //               .productQuantity(state.cart.products)
+                  //               .keys
+                  //               .elementAt(index);
+                  //           var quantity = state.cart
+                  //               .productQuantity(state.cart.products)
+                  //               .values
+                  //               .elementAt(index);
+                  //           return OrderSummaryProductCard(
+                  //             product: product,
+                  //             quantity: quantity,
+                  //           );
+                  //         },
+                  //       );
+                  //     } else {
+                  //       return CircularProgressIndicator(); // Or any loading indicator
+                  //     }
+                  //   },
+                  // ),
                   // ListView(
                   //   shrinkWrap: true,
                   //   padding: EdgeInsets.zero,
