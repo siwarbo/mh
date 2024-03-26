@@ -33,6 +33,8 @@ class AppRouter {
         return CheckoutScreen.route();
       case OrderConfirmation.routeName:
         return OrderConfirmation.route();
+      case PaymentSelection.routeName:
+        return PaymentSelection.route();
 
       //
       case ProductsScreen.routeName:

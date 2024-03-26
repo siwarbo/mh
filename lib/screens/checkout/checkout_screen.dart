@@ -115,40 +115,40 @@ class CheckoutScreen extends StatelessWidget {
                         .add(UpdateCheckout(zipCode: value));
                   }, context, 'ZIP Code'),
                   SizedBox(height: 20),
-                  Container(
-                    height: 40,
-                    alignment: Alignment.bottomCenter,
-                    decoration: BoxDecoration(color: Colors.black),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Center(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                '/payment-selection',
-                              );
-                            },
-                            child: Text(
-                              'SELECT A PAYMENT METHOD',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline3!
-                                  .copyWith(fontSize: 12, color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   height: 40,
+                  //   alignment: Alignment.bottomCenter,
+                  //   decoration: BoxDecoration(color: Colors.black),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      //children: [
+                      // Center(
+                      //   child: TextButton(
+                      //     onPressed: () {
+                      //       Navigator.pushNamed(
+                      //         context,
+                      //         '/payment-selection',
+                      //       );
+                      //     },
+                      //     child: Text(
+                      //       'SELECT A PAYMENT METHOD',
+                      //       style: Theme.of(context)
+                      //           .textTheme
+                      //           .headline3!
+                      //           .copyWith(fontSize: 12, color: Colors.white),
+                      //     ),
+                      //   ),
+                      // ),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: Icon(
+                      //     Icons.arrow_forward,
+                      //     color: Colors.white,
+                      //   ),
+                      // )
+                      //],
+                    //),
+                  //),
                   SizedBox(height: 10),
                   Text(
                     'ORDER SUMMARY',

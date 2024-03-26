@@ -60,7 +60,7 @@ class OrderConfirmation extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hi Massimo,',
+                    'Hi,',
                     style: Theme.of(context)
                         .textTheme
                         .headline5!
@@ -111,6 +111,42 @@ class OrderConfirmation extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 20),
+            Container(
+              height: 50,
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(color: Colors.black),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/payment-selection',
+                        );
+                      },
+                      child: Text(
+                        'SELECT A PAYMENT METHOD',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline3!
+                            .copyWith(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
           ],
         ),
       ),
