@@ -1,5 +1,7 @@
+import 'package:alh/blocs/cart/cart_bloc.dart';
 import 'package:alh/widgetts/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 import '/models/models.dart';
@@ -93,21 +95,53 @@ class OrderConfirmation extends StatelessWidget {
                   ),
                   Divider(thickness: 2),
                   SizedBox(height: 5),
-                  ListView(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      OrderSummaryProductCard(
-                        product: Product.products[0],
-                        quantity: 2,
-                      ),
-                      OrderSummaryProductCard(
-                        product: Product.products[1],
-                        quantity: 2,
-                      ),
-                    ],
+                  BlocBuilder<CartBloc, CartState>(
+                    builder: (context, state) {
+                      if (state is CartLoaded) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: state.cart
+                              .productQuantity(state.cart.products)
+                              .keys
+                              .length,
+                          itemBuilder: (context, index) {
+                            var product = state.cart
+                                .productQuantity(state.cart.products)
+                                .keys
+                                .elementAt(index);
+                            var quantity = state.cart
+                                .productQuantity(state.cart.products)
+                                .values
+                                .elementAt(index);
+                            return OrderSummaryProductCard(
+                              product: product,
+                              quantity: quantity,
+                            );
+                          },
+                        );
+                      } else {
+                        return CircularProgressIndicator(); // Or any loading indicator
+                      }
+                    },
                   ),
+                  // ListView(
+                  //   shrinkWrap: true,
+                  //   padding: EdgeInsets.zero,
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   children: [
+
+                  //     // OrderSummaryProductCard(
+                  //     //   product: Product.products[0],
+                  //     //   quantity: 2,
+                  //     // ),
+                  //     // OrderSummaryProductCard(
+                  //     //   product: Product.products[1],
+                  //     //   quantity: 2,
+                  //     // ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
