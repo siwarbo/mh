@@ -9,6 +9,8 @@ class Acter3Page extends StatefulWidget {
   State<Acter3Page> createState() => _Acter3PageState();
 }
 
+
+
 class _Acter3PageState extends State<Acter3Page> {
   @override
   Widget build(BuildContext context) {
@@ -21,33 +23,38 @@ class _Acter3PageState extends State<Acter3Page> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 10,
-            ),
-            GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushNamed(context, "/login");
-                showToast(message: "Successfully signed out ");
-              },
-              child: Container(
-                height: 45,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    "Sign out",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+            Container(
+              width: double.infinity,
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/deliveryPersonnel');
+                },
+                child: const Card(
+                  child: Center(
+                    child: Text('Go To Delivery'),
                   ),
                 ),
               ),
-            )
+            ),
+            // Container(
+            //   width: double.infinity,
+            //   height: 150,
+            //   padding: const EdgeInsets.symmetric(horizontal: 10),
+            //   child: InkWell(
+            //     onTap: () {
+            //       //Get.to(ProductsScreen());
+            //       //Get.toNamed('/products');
+            //       Navigator.pushNamed(context, '/orders');
+            //     },
+            //     child: const Card(
+            //       child: Center(
+            //         child: Text('Go To Orders'),
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
