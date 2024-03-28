@@ -13,10 +13,13 @@ class DeliveryPersonnel extends Equatable {
   final bool isAccepted;
   final bool isDelivered;
   final bool isCancelled;
-
+  final String? address;
+  final String? city;
+  final String? country;
+  final String? zipCode;
 
   DeliveryPersonnel({
-     required this.id,
+    required this.id,
     required this.customerName,
     required this.productIds,
     required this.deliveryFee,
@@ -25,6 +28,10 @@ class DeliveryPersonnel extends Equatable {
     required this.isAccepted,
     required this.isDelivered,
     required this.isCancelled,
+    required this.address,
+    required this.city,
+    required this.country,
+    required this.zipCode,
   });
 
   @override
@@ -39,6 +46,10 @@ class DeliveryPersonnel extends Equatable {
       isAccepted,
       isDelivered,
       isCancelled,
+      address,
+      city,
+      country,
+      zipCode,
     ];
   }
 
@@ -53,6 +64,10 @@ class DeliveryPersonnel extends Equatable {
     bool? isAccepted,
     bool? isDelivered,
     bool? isCancelled,
+    String? address,
+    String? city,
+    String? country,
+    String? zipCode,
   }) {
     return DeliveryPersonnel(
       id: id ?? this.id,
@@ -65,6 +80,10 @@ class DeliveryPersonnel extends Equatable {
       isAccepted: isAccepted ?? this.isAccepted,
       isDelivered: isDelivered ?? this.isDelivered,
       isCancelled: isCancelled ?? this.isCancelled,
+      address: address ?? this.address,
+      city: city ?? this.city,
+      country: country ?? this.country,
+      zipCode: zipCode ?? this.zipCode,
     );
   }
 
@@ -79,6 +98,10 @@ class DeliveryPersonnel extends Equatable {
       'isAccepted': isAccepted,
       'isDelivered': isDelivered,
       'isCancelled': isCancelled,
+      'address': address,
+      'city': city,
+      'country': country,
+      'zipCode': zipCode,
     };
   }
 
@@ -94,6 +117,10 @@ class DeliveryPersonnel extends Equatable {
       isAccepted: snap['isAccepted'],
       isDelivered: snap['isDelivered'],
       isCancelled: snap['isCancelled'],
+      address: snap['address'],
+      city: snap['city'],
+      country: snap['country'],
+      zipCode: snap['zipCode'],
     );
   }
 

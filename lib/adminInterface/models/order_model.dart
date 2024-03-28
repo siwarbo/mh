@@ -14,6 +14,10 @@ class Orders extends Equatable {
   final bool isAccepted;
   final bool isDelivered;
   final bool isCancelled;
+  final String? address;
+  final String? city;
+  final String? country;
+  final String? zipCode;
   //final DateTime createdAt;
 
   Orders({
@@ -27,6 +31,10 @@ class Orders extends Equatable {
     required this.isAccepted,
     required this.isDelivered,
     required this.isCancelled,
+    required this.address,
+    required this.city,
+    required this.country,
+    required this.zipCode,
     //required this.createdAt,
   });
 
@@ -43,6 +51,10 @@ class Orders extends Equatable {
       isAccepted,
       isDelivered,
       isCancelled,
+      address,
+      city,
+      country,
+      zipCode,
       //createdAt,
     ];
   }
@@ -58,6 +70,10 @@ class Orders extends Equatable {
     bool? isAccepted,
     bool? isDelivered,
     bool? isCancelled,
+    String? address,
+    String? city,
+    String? country,
+    String? zipCode,
     //DateTime? createdAt,
   }) {
     return Orders(
@@ -71,6 +87,10 @@ class Orders extends Equatable {
       isAccepted: isAccepted ?? this.isAccepted,
       isDelivered: isDelivered ?? this.isDelivered,
       isCancelled: isCancelled ?? this.isCancelled,
+      address: address ?? this.address,
+      city: city ?? this.city,
+      country: country ?? this.country,
+      zipCode: zipCode ?? this.zipCode,
       //createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -87,6 +107,10 @@ class Orders extends Equatable {
       'isAccepted': isAccepted,
       'isDelivered': isDelivered,
       'isCancelled': isCancelled,
+      'address' : address,
+      'city': city,
+      'country': country,
+      'zipCode': zipCode,
       //'createdAt': createdAt.millisecondsSinceEpoch,
     };
   }
@@ -103,6 +127,11 @@ class Orders extends Equatable {
       isAccepted: snap['isAccepted'],
       isDelivered: snap['isDelivered'],
       isCancelled: snap['isCancelled'],
+      address: snap['address'],
+      city: snap['city'],
+      country: snap['country'],
+      zipCode: snap['zipCode'],
+
       //createdAt: DateTime.parse(snap['createdAt']()),
     );
   }
@@ -128,32 +157,34 @@ class Orders extends Equatable {
   //   ];
   // }
 
-  static List<Orders> orders = [
-    Orders(
-      id: 'a',
+  // static List<Orders> orders = [
+  //   Orders(
+  //     id: 'a',
       //customerId: 'a',
-      customerName: 'a',
-      productIds: const ['a', 'aa'],
-      deliveryFee: '10',
-      subtotal: '20',
-      total: '30',
-      isAccepted: false,
-      isDelivered: false,
-      isCancelled: false,
+      // customerName: 'a',
+      // productIds: const ['a', 'aa'],
+      // deliveryFee: '10',
+      // subtotal: '20',
+      // total: '30',
+      // isAccepted: false,
+      // isDelivered: false,
+      // isCancelled: false,
+      // address: 'a',
       //createdAt: DateTime.now(),
-    ),
-    Orders(
-      id: 'b',
-      //customerId: 'b',
-      customerName: 'b',
-      productIds: const ['b', 'bb', 'cc'],
-      deliveryFee: '10',
-      subtotal: '25',
-      total: '35',
-      isAccepted: false,
-      isDelivered: false,
-      isCancelled: false,
-      //createdAt: DateTime.now(),
-    ),
-  ];
+  //   ),
+  //   Orders(
+  //     id: 'b',
+  //     //customerId: 'b',
+  //     customerName: 'b',
+  //     productIds: const ['b', 'bb', 'cc'],
+  //     deliveryFee: '10',
+  //     subtotal: '25',
+  //     total: '35',
+  //     isAccepted: false,
+  //     isDelivered: false,
+  //     isCancelled: false,
+  //     address: 'a',
+  //     //createdAt: DateTime.now(),
+  //   ),
+  // ];
 }

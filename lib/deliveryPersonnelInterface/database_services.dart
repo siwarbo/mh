@@ -57,10 +57,10 @@ class DatabaseServices {
         print('Data from orders: $data'); // Print the retrieved data
 
         // Check if the order is accepted
-      if (data['isAccepted'] != true) {
-        print('Order is not accepted');
-        continue; // Skip if the order is not accepted
-      }
+        if (data['isAccepted'] != true) {
+          print('Order is not accepted');
+          continue; // Skip if the order is not accepted
+        }
 
         final existingDeliveryPersonnelQuery = await deliveryPersonnelCollection
             .where('id', isEqualTo: ordersDocument.id)
@@ -83,6 +83,10 @@ class DatabaseServices {
           isAccepted: data['isAccepted'] ?? false, // Default value
           isDelivered: false, // Default value
           isCancelled: false,
+          address: data['address'] ?? 'no address provided',
+          city: data['city'] ?? 'no city provided',
+          country: data['country'] ?? 'no country provided',
+          zipCode: data['zipCode'] ?? 'no zipCode provided',
         );
         await _firebaseFirestore
             .collection('deliveryPersonnel')

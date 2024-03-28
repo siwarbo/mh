@@ -105,6 +105,10 @@ class DatabaseService {
           isAccepted: false, // Default value
           isDelivered: false, // Default value
           isCancelled: false, // Default value
+          address: data['customerAddress']['address'] ?? 'no address provided',
+          city: data['customerAddress']['city'] ?? 'no city provided',
+          country: data['customerAddress']['country'] ?? 'no country provided',
+          zipCode: data['customerAddress']['zipCode'] ?? 'no zipCode provided',
         );
 
         // Create a new document in 'orders' with the new data
