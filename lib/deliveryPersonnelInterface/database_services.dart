@@ -56,6 +56,12 @@ class DatabaseServices {
         final data = ordersDocument.data();
         print('Data from orders: $data'); // Print the retrieved data
 
+        // Check if the order is accepted
+      if (data['isAccepted'] != true) {
+        print('Order is not accepted');
+        continue; // Skip if the order is not accepted
+      }
+
         final existingDeliveryPersonnelQuery = await deliveryPersonnelCollection
             .where('id', isEqualTo: ordersDocument.id)
             .get();
@@ -74,7 +80,7 @@ class DatabaseServices {
           subtotal: data['subtotal'] ?? 'no subtotal provided',
           total: data['total'] ?? 'no total provided',
           // Assuming 'total' in orders is 'total' + 'deliveryFee' in checkout
-          isAccepted: false, // Default value
+          isAccepted: data['isAccepted'] ?? false, // Default value
           isDelivered: false, // Default value
           isCancelled: false,
         );
@@ -87,4 +93,16 @@ class DatabaseServices {
       print("Error copying orders to deliveryPersonnel: $e");
     }
   }
+
+  // Stream<List<DeliveryPersonnel>> getAcceptedDeliveryPersonnel() {
+  //   return _firebaseFirestore
+  //       .collection('deliveryPersonnel')
+  //       .where('isAccepted', isEqualTo: true)
+  //       .snapshots()
+  //       .map((snapshot) {
+  //     return snapshot.docs
+  //         .map((doc) => DeliveryPersonnel.fromSnapshot(doc))
+  //         .toList();
+  //   });
+  // }
 }
