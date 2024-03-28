@@ -1,3 +1,4 @@
+import 'package:alh/adminInterface/services/database_service.dart';
 import 'package:alh/screens/product/product_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:alh/adminInterface/controllers/controlllers.dart';
 
 import 'package:intl/intl.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends StatefulWidget {
   static const String routeName = '/orders';
 
   static Route route() {
@@ -21,8 +22,22 @@ class OrdersScreen extends StatelessWidget {
 
   OrdersScreen({super.key});
 
+  @override
+  State<OrdersScreen> createState() => _OrdersScreenState();
+}
+
+class _OrdersScreenState extends State<OrdersScreen> {
   final OrderController orderController = Get.put(OrderController());
+
   final ProductController productController = Get.put(ProductController());
+
+  final DatabaseService _databaseService = DatabaseService();
+
+  @override
+  void initState() {
+    super.initState();
+    _databaseService.copyCheckoutToOrders();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +85,24 @@ class OrderCard extends StatelessWidget {
   final ProductController productController = Get.find();
   @override
   Widget build(BuildContext context) {
-    var products = productController.products
-        .where((product) => order.productIds.contains(product.id))
-        .toList();
+    // var products = productController.products
+    //     .where((product) => order.productIds.contains(product.id))
+    //     .toList();
+    List<Product> products = [];
+
+    // Fetch products based on their names
+    order.productIds.forEach((productName) {
+      Product? product = productController.products.firstWhere(
+        (product) => product.name == productName,
+      );
+      if (product != null) {
+        products.add(product);
+      }
+    });
+
+    print(products);
+
+    print(products);
     return Padding(
       padding: const EdgeInsets.only(
         left: 10.0,

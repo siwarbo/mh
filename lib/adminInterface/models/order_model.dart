@@ -5,11 +5,12 @@ import 'package:equatable/equatable.dart';
 
 class Orders extends Equatable {
   final String id;
-  final String customerId;
+  //final String customerId;
+  final String customerName;
   final List<String> productIds;
-  final double deliveryFee;
-  final double subtotal;
-  final double total;
+  final String deliveryFee;
+  final String subtotal;
+  final String total;
   final bool isAccepted;
   final bool isDelivered;
   final bool isCancelled;
@@ -17,7 +18,8 @@ class Orders extends Equatable {
 
   Orders({
     required this.id,
-    required this.customerId,
+    //required this.customerId,
+    required this.customerName,
     required this.productIds,
     required this.deliveryFee,
     required this.subtotal,
@@ -32,7 +34,8 @@ class Orders extends Equatable {
   List<Object?> get props {
     return [
       id,
-      customerId,
+      //customerId,
+      customerName,
       productIds,
       deliveryFee,
       subtotal,
@@ -46,11 +49,12 @@ class Orders extends Equatable {
 
   Orders copyWith({
     String? id,
-    String? customerId,
+    //String? customerId,
+    String? customerName,
     List<String>? productIds,
-    double? deliveryFee,
-    double? total,
-    double? subtotal,
+    String? deliveryFee,
+    String? total,
+    String? subtotal,
     bool? isAccepted,
     bool? isDelivered,
     bool? isCancelled,
@@ -58,7 +62,8 @@ class Orders extends Equatable {
   }) {
     return Orders(
       id: id ?? this.id,
-      customerId: customerId ?? this.customerId,
+      //customerId: customerId ?? this.customerId,
+      customerName: customerName ?? this.customerName,
       productIds: productIds ?? this.productIds,
       deliveryFee: deliveryFee ?? this.deliveryFee,
       subtotal: subtotal ?? this.subtotal,
@@ -73,7 +78,8 @@ class Orders extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'customerId': customerId,
+      //'customerId': customerId,
+      'customerName': customerName,
       'productIds': productIds,
       'deliveryFee': deliveryFee,
       'subtotal': subtotal,
@@ -88,11 +94,12 @@ class Orders extends Equatable {
   factory Orders.fromSnapshot(DocumentSnapshot snap) {
     return Orders(
       id: snap['id'],
-      customerId: snap['customerId'],
+      //customerId: snap['customerId'],
+      customerName: snap['customerName'],
       productIds: List<String>.from(snap['productIds']),
       deliveryFee: snap['deliveryFee'],
       subtotal: snap['subtotal'],
-      total: snap['total'],
+      total: snap['total'].toString(),
       isAccepted: snap['isAccepted'],
       isDelivered: snap['isDelivered'],
       isCancelled: snap['isCancelled'],
@@ -124,11 +131,12 @@ class Orders extends Equatable {
   static List<Orders> orders = [
     Orders(
       id: 'a',
-      customerId: 'a',
+      //customerId: 'a',
+      customerName: 'a',
       productIds: const ['a', 'aa'],
-      deliveryFee: 10,
-      subtotal: 20,
-      total: 30,
+      deliveryFee: '10',
+      subtotal: '20',
+      total: '30',
       isAccepted: false,
       isDelivered: false,
       isCancelled: false,
@@ -136,11 +144,12 @@ class Orders extends Equatable {
     ),
     Orders(
       id: 'b',
-      customerId: 'b',
+      //customerId: 'b',
+      customerName: 'b',
       productIds: const ['b', 'bb', 'cc'],
-      deliveryFee: 10,
-      subtotal: 25,
-      total: 35,
+      deliveryFee: '10',
+      subtotal: '25',
+      total: '35',
       isAccepted: false,
       isDelivered: false,
       isCancelled: false,

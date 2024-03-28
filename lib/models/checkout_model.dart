@@ -53,7 +53,7 @@ class Checkout extends Equatable {
       'customerEmail': email!,
       'products': products!.map((product) => product.name).toList(),
       'subtotal': subtotal!,
-      'deleveryFee': deliveryFee!,
+      'deliveryFee': deliveryFee!,
       'total': total!
     };
   }

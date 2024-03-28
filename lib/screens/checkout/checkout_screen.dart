@@ -88,7 +88,7 @@ class CheckoutScreen extends StatelessWidget {
                         .add(UpdateCheckout(fullName: value));
                   }, context, 'Full Name'),
                   Text(
-                    'DELEVERY INFORMATION',
+                    'DELIVERY INFORMATION',
                     style: Theme.of(context)
                         .textTheme
                         .headline6!
