@@ -21,33 +21,51 @@ class _Acter4PageState extends State<Acter4Page> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 10,
-            ),
-            GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushNamed(context, "/login");
-                showToast(message: "Successfully signed out ");
-              },
-              child: Container(
-                height: 45,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    "Sign out",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+            Container(
+              width: double.infinity,
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/deliveryPersonnel');
+                },
+                child: const Card(
+                  child: Center(
+                    child: Text('Go To Delivery'),
                   ),
                 ),
               ),
-            )
+            ),
+            Container(
+              width: double.infinity,
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/orders');
+                },
+                child: const Card(
+                  child: Center(
+                    child: Text('Go To Orders'),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/products');
+                },
+                child: const Card(
+                  child: Center(
+                    child: Text('Go To Products'),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

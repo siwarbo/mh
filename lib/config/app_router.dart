@@ -2,6 +2,7 @@ import 'package:alh/adminInterface/screenss/products_screen.dart';
 import 'package:alh/deliveryPersonnelInterface/delivery_model.dart';
 import 'package:alh/deliveryPersonnelInterface/delivery_screen.dart';
 import 'package:alh/models/models.dart';
+import 'package:alh/restaurantManager/restaurant_manager_screen.dart';
 import 'package:alh/screens/order_confirmation/order_confirmation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:alh/screens/screens.dart';
@@ -49,6 +50,9 @@ class AppRouter {
 
       case DeliveryPersonnelScreen.routeName:
         return DeliveryPersonnelScreen.route();
+
+      case RestauranManagerScreen.routeName:
+        return RestauranManagerScreen.route();
 
       default:
         return _errorRoute();
