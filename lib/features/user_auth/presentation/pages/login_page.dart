@@ -199,10 +199,10 @@ class _LoginPageState extends State<LoginPage> {
         } else if (role == 'Admin') {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => AdminPage()));
-        } else if (role == 'Acter3') {
+        } else if (role == 'Delivery') {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Acter3Page()));
-        } else if (role == 'Acter4') {
+        } else if (role == 'Manager') {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Acter4Page()));
         } else {

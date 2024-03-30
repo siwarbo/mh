@@ -82,7 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       _selectedRole = newValue!;
                     });
                   },
-                  items: <String>['User', 'Admin','Acter3','Acter4'].map((String value) {
+                  items: <String>['User', 'Admin','Delivery','Manager'].map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),

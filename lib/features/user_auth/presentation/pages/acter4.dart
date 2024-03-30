@@ -15,7 +15,7 @@ class _Acter4PageState extends State<Acter4Page> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("Acter 4 Page"),
+        title: Text("Manager Page"),
       ),
       body: Center(
         child: Column(
