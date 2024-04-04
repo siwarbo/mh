@@ -127,9 +127,10 @@ class OrderCard extends StatelessWidget {
                   ),
                   Text(
                     //DateFormat('dd-MM-yyyy').format(order.createdAt),
-                    DateFormat.ABBR_MONTH_DAY,
+                    //DateFormat.ABBR_MONTH_DAY,
+                    '🖤',
                     style: const TextStyle(
-                      fontSize: 10,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
