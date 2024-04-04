@@ -54,6 +54,9 @@ class AppRouter {
       case RestauranManagerScreen.routeName:
         return RestauranManagerScreen.route();
 
+      case RoleScreen.routeName:
+        return RoleScreen.route();
+
       default:
         return _errorRoute();
     }
