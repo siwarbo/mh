@@ -102,7 +102,7 @@ class OrderConfirmation extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Thank you for purchasing on Zero To Unicorn.',
+                    'Thank you for choosing our restaurant.',
                     style: Theme.of(context)
                         .textTheme
                         .headline6!

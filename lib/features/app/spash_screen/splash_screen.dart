@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       children: [
         Center(
           child: Image(
-            image: AssetImage('assets/images/logo.png'),
+            image: AssetImage('assets/images/simple.png'),
             width: 125,
             height: 125,
           ),
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
             horizontal: 20,
           ),
           child: Text(
-            'Zero To Unicorn',
+            'FoodFlow',
             style: Theme.of(context).textTheme.headline2!.copyWith(
                   color: Colors.white,
                   fontSize: 22,

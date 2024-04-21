@@ -131,7 +131,7 @@ class ProductScreen extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                      'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
+                      'Discover a symphony of flavors at our restaurant, where every dish is a masterpiece crafted with the finest ingredients.',
                       style: Theme.of(context).textTheme.bodyText1),
                 ),
               ],
@@ -145,7 +145,7 @@ class ProductScreen extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+                      'Enjoy the convenience of having your favorite dishes delivered straight to your doorstep! Our delivery service ensures that your food arrives fresh and hot, ready to be savored in the comfort of your own home',
                       style: Theme.of(context).textTheme.bodyText1),
                 ),
               ],

@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Zero To Unicorn'),
+      appBar: CustomAppBar(title: 'FoodFlow'),
       bottomNavigationBar: CustomNavBar(),
       body: Column(
         children: [

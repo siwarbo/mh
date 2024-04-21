@@ -54,7 +54,7 @@ class _ProfileUserState extends State<ProfileUser> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                'assets/images/images.jpeg'), // Replace with your image path
+                'assets/images/prof.jpg'), // Replace with your image path
             fit: BoxFit.cover, // Adjust image fit as needed
           ),
         ),
@@ -67,7 +67,7 @@ class _ProfileUserState extends State<ProfileUser> {
               CircleAvatar(
                 radius: 100, // Adjust radius as needed
                 backgroundImage: AssetImage(
-                    'assets/images/iconp.png'), // Replace with your image path
+                    'assets/images/ip.jpg'), // Replace with your image path
               ),
               SizedBox(height: 20),
               Row(
