@@ -1,7 +1,11 @@
 import 'package:alh/models/category_model.dart';
 import 'package:alh/models/models.dart';
+
+//////////////////////////////////////////////////////////////
 // import 'package:alh/widgetts/custom_appbar.dart';
 // import 'package:alh/widgetts/custom_navbar.dart';
+////////////////////////////////////////////////////////////
+
 import 'package:alh/widgetts/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +28,9 @@ class CatalogScreen extends StatelessWidget {
     final List<Product> categoryProducts = Product.products
         .where((product) => product.category == category.name)
         .toList();
+
+
+
     return Scaffold(
         appBar: CustomAppBar(title: category.name),
         bottomNavigationBar: const CustomNavBar(),

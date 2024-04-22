@@ -128,7 +128,7 @@ class CartScreen extends StatelessWidget {
                                       .copyWith(fontSize: 14),
                                 ),
                                 Text(
-                                  '\$${state.cart.subtotalString}',
+                                  '\DT ${state.cart.subtotalString}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline5!
@@ -148,7 +148,7 @@ class CartScreen extends StatelessWidget {
                                       .copyWith(fontSize: 14),
                                 ),
                                 Text(
-                                  '\$${state.cart.deliveryFeeString}',
+                                  '\DT ${state.cart.deliveryFeeString}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline5!
@@ -191,7 +191,7 @@ class CartScreen extends StatelessWidget {
                                             fontSize: 14, color: Colors.white),
                                   ),
                                   Text(
-                                    '\$${state.cart.totalString}',
+                                    '\DT ${state.cart.totalString}',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline5!

@@ -78,7 +78,8 @@ class ProductCard extends StatelessWidget {
                                     ),
                           ),
                           Text(
-                            '\$${Product.products[0].price}',
+                            //'\DT ${Product.products[0].price.toStringAsFixed(1)}',
+                            '\DT ${product.price.toStringAsFixed(1)}',
                             style:
                                 Theme.of(context).textTheme.headline6!.copyWith(
                                       color: Colors.white,

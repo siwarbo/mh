@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class OrderSummaryProductCard extends StatelessWidget {
   const OrderSummaryProductCard({
-    
-    super.key, required this.product, required this.quantity,
+    super.key,
+    required this.product,
+    required this.quantity,
   });
 
   final Product product;
@@ -49,7 +50,7 @@ class OrderSummaryProductCard extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              '\$${product.price}',
+              '\DT ${product.price.toStringAsFixed(1)}',
               style:
                   Theme.of(context).textTheme.headline6!.copyWith(fontSize: 16),
             ),

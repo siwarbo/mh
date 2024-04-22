@@ -38,7 +38,8 @@ class CartProductCard extends StatelessWidget {
                       .copyWith(fontSize: 14),
                 ),
                 Text(
-                  '\$${product.price}',
+                  //'\$${product.price}',
+                  '\DT ${product.price.toStringAsFixed(1)}',
                   style: Theme.of(context)
                       .textTheme
                       .headline6!
@@ -56,11 +57,10 @@ class CartProductCard extends StatelessWidget {
                     onPressed: () {
                       context.read<CartBloc>().add(CartProductRemoved(product));
                     }),
-
                 Text(
                   '$quantity',
                   style: Theme.of(context)
-                     .textTheme
+                      .textTheme
                       .headline5!
                       .copyWith(fontSize: 14),
                 ),

@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:alh/widgetts/widgets.dart';
 import 'package:alh/models/product_model.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -109,7 +110,8 @@ class ProductScreen extends StatelessWidget {
                               .copyWith(color: Colors.white),
                         ),
                         Text(
-                          '${product.price}',
+                          //'\DT ${product.price}',
+                          '\DT ${product.price.toStringAsFixed(1)}',
                           style: Theme.of(context)
                               .textTheme
                               .headline5!

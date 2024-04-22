@@ -41,6 +41,118 @@ class Product extends Equatable {
   }
 
   static List<Product> products = [
+    Product(
+      name: 'Smoothies #1',
+      category: 'Smoothies',
+      imageUrl:
+          'https://images.unsplash.com/photo-1526424382096-74a93e105682?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80', //https://unsplash.com/photos/kcYXj4tBtes
+      price: 2.99,
+      isRecommended: true,
+      isPopular: false,
+    ),
+    Product(
+      name: 'Smoothies #2',
+      category: 'Smoothies',
+      imageUrl:
+          'https://images.unsplash.com/photo-1505252585461-04db1eb84625?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1552&q=80', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 2.99,
+      isRecommended: false,
+      isPopular: false,
+    ),
+    Product(
+      name: 'Juice',
+      category: 'Drinks',
+      imageUrl:
+          'https://images.pexels.com/photos/1251210/pexels-photo-1251210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 12.5,
+      isRecommended: false,
+      isPopular: false,
+    ),
+    Product(
+      name: 'water',
+      category: 'Drinks',
+      imageUrl:
+          'https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 1.5,
+      isRecommended: true,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Pizza',
+      category: 'Main Courses',
+      imageUrl:
+          'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 15.9,
+      isRecommended: true,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Cheese burger',
+      category: 'Main Courses',
+      imageUrl:
+          'https://images.pexels.com/photos/1251198/pexels-photo-1251198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 13.9,
+      isRecommended: true,
+      isPopular: false,
+    ),
+    Product(
+      name: 'Soup',
+      category: 'Main Courses',
+      imageUrl:
+          'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 23.9,
+      isRecommended: true,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Chicken burger',
+      category: 'Main Courses',
+      imageUrl:
+          'https://images.pexels.com/photos/1431305/pexels-photo-1431305.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 19.9,
+      isRecommended: true,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Chicken salad',
+      category: 'Sides',
+      imageUrl:
+          'https://images.pexels.com/photos/434258/pexels-photo-434258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 8.9,
+      isRecommended: true,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Greek salad',
+      category: 'Sides',
+      imageUrl:
+          'https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 6.9,
+      isRecommended: false,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Cheese cake',
+      category: 'Desserts',
+      imageUrl:
+          'https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 11.9,
+      isRecommended: true,
+      isPopular: true,
+    ),
+    Product(
+      name: 'Ice cream',
+      category: 'Desserts',
+      imageUrl:
+          'https://images.pexels.com/photos/1352281/pexels-photo-1352281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
+      price: 8.9,
+      isRecommended: false,
+      isPopular: true,
+    ),
+  ];
+}
+
+
     //Product(
     //   name: 'Soft Drink #1',
     //   category: 'Soft Drinks',
@@ -113,24 +225,7 @@ class Product extends Equatable {
     //   isRecommended: true,
     //   isPopular: true,
     // ),
-    Product(
-      name: 'Smoothies #1',
-      category: 'Smoothies',
-      imageUrl:
-          'https://images.unsplash.com/photo-1526424382096-74a93e105682?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80', //https://unsplash.com/photos/kcYXj4tBtes
-      price: 2.99,
-      isRecommended: true,
-      isPopular: false,
-    ),
-    Product(
-      name: 'Smoothies #2',
-      category: 'Smoothies',
-      imageUrl:
-          'https://images.unsplash.com/photo-1505252585461-04db1eb84625?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1552&q=80', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 2.99,
-      isRecommended: false,
-      isPopular: false,
-    ),
+    
     // Product(
     //   name: 'Soft Drink #1',
     //   category: 'Soft Drinks',
@@ -167,96 +262,4 @@ class Product extends Equatable {
     //   isRecommended: false,
     //   isPopular: false,
     // ),
-    Product(
-      name: 'Juice',
-      category: 'Drinks', 
-      imageUrl:
-          'https://images.pexels.com/photos/1251210/pexels-photo-1251210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 11.99,
-      isRecommended: false,
-      isPopular: false,
-    ),
-    Product(
-      name: 'water',
-      category: 'Drinks', 
-      imageUrl:
-          'https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 0.99,
-      isRecommended: true,
-      isPopular: true,
-    ),
-
-    Product(
-      name: 'Pizza',
-      category: 'Main Courses',
-      imageUrl:
-          'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 13.9,
-      isRecommended: true,
-      isPopular: true,
-    ),
-    Product(
-      name: 'Cheese burger',
-      category: 'Main Courses',
-      imageUrl:
-          'https://images.pexels.com/photos/1251198/pexels-photo-1251198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price:13.9,
-      isRecommended: true,
-      isPopular: false,
-    ),
-    Product(
-      name: 'Soup',
-      category: 'Main Courses',
-      imageUrl:
-          'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 23.9,
-      isRecommended: true,
-      isPopular: true,
-    ),
-    Product(
-      name: 'Chicken burger',
-      category: 'Main Courses',
-      imageUrl:
-          'https://images.pexels.com/photos/1431305/pexels-photo-1431305.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 19.9,
-      isRecommended: true,
-      isPopular: true,
-    ),
-    Product(
-      name: 'Chicken salad',
-      category: 'Sides',
-      imageUrl:
-          'https://images.pexels.com/photos/434258/pexels-photo-434258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 8.9,
-      isRecommended: true,
-      isPopular: true,
-    ),
-    Product(
-      name: 'Greek salad',
-      category: 'Sides',
-      imageUrl:
-          'https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 6.9,
-      isRecommended: false,
-      isPopular: true,
-    ),
-    Product(
-      name: 'Cheese cake',
-      category: 'Desserts',
-      imageUrl:
-          'https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 11.9,
-      isRecommended: true,
-      isPopular: true,
-    ),
-    Product(
-      name: 'Ice cream',
-      category: 'Desserts',
-      imageUrl:
-          'https://images.pexels.com/photos/1352281/pexels-photo-1352281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', //https://unsplash.com/photos/CrK843Pl9a4
-      price: 8.9,
-      isRecommended: false,
-      isPopular: true,
-    ),
-  ];
-}
+    

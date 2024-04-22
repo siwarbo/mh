@@ -210,7 +210,7 @@ class ProductsCard extends StatelessWidget {
                             },
                           ),
                           Text(
-                            '\$${product.price.toStringAsFixed(1)}',
+                            '\DT ${product.price.toStringAsFixed(1)}',
                             style: const TextStyle(
                               fontSize: 9,
                               fontWeight: FontWeight.bold,
