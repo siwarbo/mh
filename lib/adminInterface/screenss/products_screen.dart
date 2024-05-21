@@ -26,7 +26,10 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Products'),
+        title: const Text('Products',style: TextStyle(
+            color: Colors
+                .white, // Couleur du texte blanche pour une meilleure visibilité
+          ),),
         backgroundColor: Colors.black,
       ),
       body: Padding(

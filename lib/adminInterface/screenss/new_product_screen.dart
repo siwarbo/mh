@@ -30,7 +30,13 @@ class NewProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a Product'),
+        title: const Text(
+          'Add a Product',
+          style: TextStyle(
+            color: Colors
+                .white, // Couleur du texte blanche pour une meilleure visibilité
+          ),
+        ),
         backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
@@ -174,6 +180,7 @@ class NewProductScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ),

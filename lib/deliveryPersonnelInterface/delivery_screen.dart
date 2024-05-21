@@ -45,7 +45,13 @@ class _DeliveryPersonnelScreenState extends State<DeliveryPersonnelScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Delivery Personnel '),
+        title: const Text(
+          'Delivery Personnel ',
+          style: TextStyle(
+            color: Colors
+                .white, // Couleur du texte blanche pour une meilleure visibilité
+          ),
+        ),
         backgroundColor: Colors.black,
       ),
       body: Column(
@@ -147,7 +153,7 @@ class DeliveryPersonnelCard extends StatelessWidget {
                   Text(
                     //DateFormat('dd-MM-yyyy').format(order.createdAt),
                     //DateFormat.ABBR_MONTH_DAY,
-                    '🖤',
+                    '❤️',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -265,6 +271,7 @@ class DeliveryPersonnelCard extends StatelessWidget {
                             "Deliver",
                             style: TextStyle(
                               fontSize: 12,
+                              color: Colors.white,
                             ),
                           ),
                         )
@@ -284,6 +291,7 @@ class DeliveryPersonnelCard extends StatelessWidget {
                             "Accept",
                             style: TextStyle(
                               fontSize: 12,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -302,6 +310,7 @@ class DeliveryPersonnelCard extends StatelessWidget {
                       "Cancel",
                       style: TextStyle(
                         fontSize: 12,
+                        color: Colors.white,
                       ),
                     ),
                   ),

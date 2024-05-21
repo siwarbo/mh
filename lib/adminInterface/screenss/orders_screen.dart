@@ -43,7 +43,13 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Orders'),
+        title: const Text(
+          'Orders',
+          style: TextStyle(
+            color: Colors
+                .white, // Couleur du texte blanche pour une meilleure visibilité
+          ),
+        ),
         backgroundColor: Colors.black,
       ),
       // body: Obx(() {
@@ -128,7 +134,7 @@ class OrderCard extends StatelessWidget {
                   Text(
                     //DateFormat('dd-MM-yyyy').format(order.createdAt),
                     //DateFormat.ABBR_MONTH_DAY,
-                    '🖤',
+                    '❤️',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -246,6 +252,7 @@ class OrderCard extends StatelessWidget {
                             "Deliver",
                             style: TextStyle(
                               fontSize: 12,
+                              color: Colors.white,
                             ),
                           ),
                         )
@@ -265,6 +272,7 @@ class OrderCard extends StatelessWidget {
                             "Accept",
                             style: TextStyle(
                               fontSize: 12,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -281,6 +289,7 @@ class OrderCard extends StatelessWidget {
                       "Cancel",
                       style: TextStyle(
                         fontSize: 12,
+                        color: Colors.white,
                       ),
                     ),
                   ),

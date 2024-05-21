@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 import '/models/models.dart';
+import 'dart:math';
 
 class OrderConfirmation extends StatelessWidget {
   static const String routeName = '/order-confirmation';
@@ -16,7 +17,18 @@ class OrderConfirmation extends StatelessWidget {
     );
   }
 
+  String generateOrderCode() {
+    Random random = Random();
+    String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    String result = '';
+    for (int i = 0; i < 8; i++) {
+      result += chars[random.nextInt(chars.length)];
+    }
+    return result;
+  }
+
   // Define a separate method for building the cart item list
+
   Widget _buildCartItemList(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
@@ -109,8 +121,10 @@ class OrderConfirmation extends StatelessWidget {
                         .copyWith(fontSize: 16),
                   ),
                   SizedBox(height: 20),
+
                   Text(
-                    'ORDER CODE: #k321-ekd3',
+                    //'ORDER CODE: #k321-ekd3',
+                    'ORDER CODE: #${generateOrderCode()}',
                     style: Theme.of(context)
                         .textTheme
                         .headline5!

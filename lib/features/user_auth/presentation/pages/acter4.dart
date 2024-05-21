@@ -17,56 +17,58 @@ class _Acter4PageState extends State<Acter4Page> {
         automaticallyImplyLeading: false,
         title: Text("Manager Page"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 150,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, '/deliveryPersonnel');
-                },
-                child: const Card(
-                  child: Center(
-                    child: Text('Go To Delivery'),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 150,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/deliveryPersonnel');
+                  },
+                  child: const Card(
+                    child: Center(
+                      child: Text('Go To Delivery'),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              width: double.infinity,
-              height: 150,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, '/orders');
-                },
-                child: const Card(
-                  child: Center(
-                    child: Text('Go To Orders'),
+              Container(
+                width: double.infinity,
+                height: 150,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/orders');
+                  },
+                  child: const Card(
+                    child: Center(
+                      child: Text('Go To Orders'),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              width: double.infinity,
-              height: 150,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, '/products');
-                },
-                child: const Card(
-                  child: Center(
-                    child: Text('Go To Products'),
+              Container(
+                width: double.infinity,
+                height: 150,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/products');
+                  },
+                  child: const Card(
+                    child: Center(
+                      child: Text('Go To Products'),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
